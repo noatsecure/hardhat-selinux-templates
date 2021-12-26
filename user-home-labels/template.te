@@ -1,8 +1,10 @@
-module NAME 1.0.0;
+policy_module(NAME, 1.0.0)
 ########################################
-require {
-    attribute file_type, non_auth_file_type, non_security_file_type, polymember, user_home_type; 
-}
-########################################
-type NAME_t, file_type, non_auth_file_type, non_security_file_type, polymember, user_home_type;
+gen_require(`
+    attribute userdom_filetrans_type;
+')
+type NAME_t;
+userdom_user_home_content(NAME_t)
+ubac_constrained(NAME_t)
+userdom_user_home_dir_filetrans(userdom_filetrans_type, NAME_t, dir, "NAME_DIR")
 ########################################
