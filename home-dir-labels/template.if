@@ -15,7 +15,7 @@ interface(`userdom_manage_NAME',`
                 type NAME_t;
         ')
 
-    userdom_user_home_dir_filetrans($1, NAME_t, dir, "NAME_DIR")
+    userdom_user_home_dir_filetrans($1, NAME_t, dir, "TARGET")
     manage_dirs_pattern($1, NAME_t, NAME_t)
     manage_files_pattern($1, NAME_t, NAME_t)
     manage_lnk_files_pattern($1, NAME_t, NAME_t)

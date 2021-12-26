@@ -6,5 +6,5 @@ gen_require(`
 type NAME_t;
 userdom_user_home_content(NAME_t)
 ubac_constrained(NAME_t)
-userdom_user_home_dir_filetrans(userdom_filetrans_type, NAME_t, dir, "NAME_DIR")
+userdom_user_home_dir_filetrans(userdom_filetrans_type, NAME_t, dir, "TARGET")
 ########################################

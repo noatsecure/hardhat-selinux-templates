@@ -1,5 +1,5 @@
 %define relabel_files() \
-restorecon -R /path/to/target; \
+restorecon -R /path/to/TARGET; \
 
 %define selinux_policyver 35.7-1
 
@@ -20,7 +20,7 @@ Requires(postun): policycoreutils
 BuildArch: noarch
 
 %description
-This package installs and sets up the SELinux policy security module (label only) for the $HOME/NAME_DIR directory.
+This package installs and sets up the SELinux policy security module (label only) for the $HOME/TARGET directory.
 
 %install
 install -d %{buildroot}%{_datadir}/selinux/packages
