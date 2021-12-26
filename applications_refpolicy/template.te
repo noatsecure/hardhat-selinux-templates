@@ -1,0 +1,22 @@
+policy_module(NAME, 1.0.0)
+########################################
+# Required
+gen_require(`
+    role user_r;
+')
+
+# Roles
+attribute_role NAME_roles;
+roleattribute user_r NAME_roles;
+role NAME_roles types NAME_t;
+
+# Types (Binary)
+type NAME_t;
+type NAME_exec_t;
+application_domain(NAME_t, NAME_exec_t);
+domain_auto_transition_pattern(user_t, NAME_exec_t, NAME_t);
+
+# Types (Configuration Directories & Files)
+# type NAME_etc_t;
+# files_config_file(NAME_etc_t);
+########################################

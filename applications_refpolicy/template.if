@@ -1,0 +1,95 @@
+
+## <summary>policy for NAME</summary>
+
+########################################
+## <summary>
+##	Execute NAME_exec_t in the NAME domain.
+## </summary>
+## <param name="domain">
+## <summary>
+##	Domain allowed to transition.
+## </summary>
+## </param>
+#
+interface(`NAME_domtrans',`
+	gen_require(`
+		type NAME_t, NAME_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, NAME_exec_t, NAME_t)
+')
+
+######################################
+## <summary>
+##	Execute NAME in the caller domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`NAME_exec',`
+	gen_require(`
+		type NAME_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	can_exec($1, NAME_exec_t)
+')
+
+########################################
+## <summary>
+##	Execute NAME in the NAME domain, and
+##	allow the specified role the NAME domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to transition
+##	</summary>
+## </param>
+## <param name="role">
+##	<summary>
+##	The role to be allowed the NAME domain.
+##	</summary>
+## </param>
+#
+interface(`NAME_run',`
+	gen_require(`
+		type NAME_t;
+		attribute_role NAME_roles;
+	')
+
+	NAME_domtrans($1)
+	roleattribute $2 NAME_roles;
+')
+
+########################################
+## <summary>
+##	Role access for NAME
+## </summary>
+## <param name="role">
+##	<summary>
+##	Role allowed access
+##	</summary>
+## </param>
+## <param name="domain">
+##	<summary>
+##	User domain for the role
+##	</summary>
+## </param>
+#
+interface(`NAME_role',`
+	gen_require(`
+		type NAME_t;
+		attribute_role NAME_roles;
+	')
+
+	roleattribute $1 NAME_roles;
+
+	NAME_domtrans($2)
+
+	ps_process_pattern($2, NAME_t)
+	allow $2 NAME_t:process { signull signal sigkill };
+')
