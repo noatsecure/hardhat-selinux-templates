@@ -1,7 +1,7 @@
 ## <summary>policy for NAME</summary>
 ######################################
 ## <summary>
-##      Manage the Downloads directory in the users homedir.
+##      Manage the TARGET directory in the users homedir.
 ## </summary>
 ## <param name="domain">
 ##      <summary>
