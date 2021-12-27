@@ -1,7 +1,7 @@
-## <summary>policy for NAME</summary>
+## <summary>policy for MODULE</summary>
 ######################################
 ## <summary>
-##      Manage the TARGET directory in the users homedir.
+##      Manage the TARGET directory in the user's homedir.
 ## </summary>
 ## <param name="domain">
 ##      <summary>
@@ -10,13 +10,12 @@
 ## </param>
 ## <rolecap/>
 #
-interface(`userdom_manage_NAME',`
-        gen_require(`
-                type NAME_t;
-        ')
-
-    userdom_user_home_dir_filetrans($1, NAME_t, dir, "TARGET")
-    manage_dirs_pattern($1, NAME_t, NAME_t)
-    manage_files_pattern($1, NAME_t, NAME_t)
-    manage_lnk_files_pattern($1, NAME_t, NAME_t)
+interface(`userdom_manage_MODULE',`
+    gen_require(`
+        type MODULE_t;
+    ')
+    userdom_user_home_dir_filetrans($1, MODULE_t, file, "TARGET")
+    manage_dirs_pattern($1, MODULE_t, MODULE_t)
+    manage_files_pattern($1, MODULE_t, MODULE_t)
+    manage_lnk_files_pattern($1, MODULE_t, MODULE_t)
 ')

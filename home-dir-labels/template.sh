@@ -13,8 +13,8 @@ fi
 
 if [ $# -eq 1 ]; then
 	if [ "$1" = "--update" ] ; then
-		time=`ls -l --time-style="+%x %X" NAME.te | awk '{ printf "%s %s", $6, $7 }'`
-		rules=`ausearch --start $time -m avc --raw -se NAME`
+		time=`ls -l --time-style="+%x %X" MODULE.te | awk '{ printf "%s %s", $6, $7 }'`
+		rules=`ausearch --start $time -m avc --raw -se MODULE`
 		if [ x"$rules" != "x" ] ; then
 			echo "Found avc's to update policy with"
 			echo -e "$rules" | audit2allow -R
@@ -22,7 +22,7 @@ if [ $# -eq 1 ]; then
 			read ANS
 			if [ "$ANS" = "y" -o "$ANS" = "Y" ] ; then
 				echo "Updating policy"
-				echo -e "$rules" | audit2allow -R >> NAME.te
+				echo -e "$rules" | audit2allow -R >> MODULE.te
 				# Fall though and rebuild policy
 			else
 				exit 0
@@ -42,12 +42,12 @@ fi
 
 echo "Building and Loading Policy"
 set -x
-make -f /usr/share/selinux/devel/Makefile NAME.pp || exit
-/usr/sbin/semodule -i NAME.pp
+make -f /usr/share/selinux/devel/Makefile MODULE.pp || exit
+/usr/sbin/semodule -i MODULE.pp
 
 # Fixing the file and directory contexts
 /sbin/restorecon -F -R -v /home/
 
 # Generate a rpm package for the newly generated policy
 pwd=$(pwd)
-rpmbuild --define "_sourcedir ${pwd}" --define "_specdir ${pwd}" --define "_builddir ${pwd}" --define "_srcrpmdir ${pwd}" --define "_rpmdir ${pwd}" --define "_buildrootdir ${pwd}/.build"  -ba NAME_selinux.spec
+rpmbuild --define "_sourcedir ${pwd}" --define "_specdir ${pwd}" --define "_builddir ${pwd}" --define "_srcrpmdir ${pwd}" --define "_rpmdir ${pwd}" --define "_buildrootdir ${pwd}/.build"  -ba MODULE_selinux.spec

@@ -1,10 +1,10 @@
-policy_module(NAME, 1.0.0)
+policy_module(MODULE, 1.0.0)
 ########################################
 gen_require(`
     attribute userdom_filetrans_type;
 ')
-type NAME_t;
-userdom_user_home_content(NAME_t)
-ubac_constrained(NAME_t)
-userdom_user_home_dir_filetrans(userdom_filetrans_type, NAME_t, dir, "TARGET")
+type MODULE_t;
+userdom_user_home_content(MODULE_t)
+ubac_constrained(MODULE_t)
+userdom_user_home_dir_filetrans(userdom_filetrans_type, MODULE_t, dir, "TARGET")
 ########################################

@@ -1,18 +1,19 @@
 %define relabel_files() \
-restorecon -R /path/to/TARGET; \
+restorecon -R /home/*/TARGET; \
+restorecon -R /home/*/TARGET/*; \
 
 %define selinux_policyver 35.7-1
 
-Name:       NAME_selinux
+Name:       MODULE_selinux
 Version:	1.0
 Release:	1%{?dist}
-Summary:	SELinux policy module for NAME
+Summary:	SELinux policy module for MODULE
 
 Group:      System Environment/Base
 License:	AGPLv3
 URL:        https://github.com/noatsecure/hardhat-selinux
-Source0:	NAME.pp
-Source1:	NAME.if
+Source0:	MODULE.pp
+Source1:	MODULE.if
 
 Requires: policycoreutils, libselinux-utils
 Requires(post): selinux-policy-base >= %{selinux_policyver}, policycoreutils
@@ -30,7 +31,7 @@ install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/selinux/devel/include/contrib/
 install -d %{buildroot}/etc/selinux/targeted/contexts/users/
 
 %post
-semodule -n -i %{_datadir}/selinux/packages/NAME.pp
+semodule -n -i %{_datadir}/selinux/packages/MODULE.pp
 if /usr/sbin/selinuxenabled ; then
     /usr/sbin/load_policy
     %relabel_files
@@ -39,7 +40,7 @@ exit 0
 
 %postun
 if [ $1 -eq 0 ]; then
-    semodule -n -r NAME
+    semodule -n -r MODULE
     if /usr/sbin/selinuxenabled ; then
        /usr/sbin/load_policy
        %relabel_files
@@ -48,5 +49,5 @@ fi;
 exit 0
 
 %files
-%attr(0600,root,root) %{_datadir}/selinux/packages/NAME.pp
-%{_datadir}/selinux/devel/include/contrib/NAME.if
+%attr(0600,root,root) %{_datadir}/selinux/packages/MODULE.pp
+%{_datadir}/selinux/devel/include/contrib/MODULE.if

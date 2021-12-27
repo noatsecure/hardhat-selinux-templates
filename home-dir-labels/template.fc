@@ -1,1 +1,1 @@
-HOME_DIR/NAME(/.*)?    gen_context(user_u:object_r:NAME_t,s0)
+HOME_DIR/Example(/.*)   gen_context(user_u:object_r:MODULE_t,s0)
