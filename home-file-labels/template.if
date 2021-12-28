@@ -14,6 +14,6 @@ interface(`userdom_manage_MODULE',`
     gen_require(`
         type MODULE_t;
     ')
-    manage_files_pattern($1, MODULE_t, MODULE_t)
-    manage_lnk_files_pattern($1, MODULE_t, MODULE_t)
+    hardhat_manage_files_pattern($1, MODULE_t, MODULE_t)
+    hardhat_manage_lnk_files_pattern($1, MODULE_t, MODULE_t)
 ')

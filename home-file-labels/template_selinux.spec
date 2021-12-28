@@ -4,17 +4,17 @@ restorecon -R /home/*/TARGET; \
 %define selinux_policyver 35.7-1
 
 Name:       MODULE_label_selinux
-Version:	1.0
-Release:	1%{?dist}
-Summary:	SELinux policy module for MODULE
+Version:    1.0
+Release:    1%{?dist}
+Summary:    SELinux policy module for MODULE
 
 Group:      System Environment/Base
-License:	AGPLv3
+License:    AGPLv3
 URL:        https://github.com/noatsecure/hardhat-selinux
-Source0:	MODULE.pp
-Source1:	MODULE.if
+Source0:    MODULE.pp
+Source1:    MODULE.if
 
-Requires: policycoreutils, libselinux-utils
+Requires: policycoreutils, libselinux-utils, hardhat_interface_macros
 Requires(post): selinux-policy-base >= %{selinux_policyver}, policycoreutils
 Requires(postun): policycoreutils
 BuildArch: noarch
