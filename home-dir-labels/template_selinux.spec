@@ -4,7 +4,7 @@ restorecon -R /home/*/TARGET/*; \
 
 %define selinux_policyver 35.7-1
 
-Name:       MODULE_selinux
+Name:       MODULE_label_selinux
 Version:	1.0
 Release:	1%{?dist}
 Summary:	SELinux policy module for MODULE
