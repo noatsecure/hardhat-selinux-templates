@@ -3,10 +3,10 @@ restorecon -R /home/*/TARGET; \
 
 %define selinux_policyver 35.7-1
 
-Name:       MODULE_label_selinux
+Name:       selinux-label-TARGET
 Version:    1.0
 Release:    1%{?dist}
-Summary:    SELinux policy module for MODULE
+Summary:    SELinux policy module for TARGET files within the home directory
 
 Group:      System Environment/Base
 License:    AGPLv3
@@ -20,7 +20,7 @@ Requires(postun): policycoreutils
 BuildArch: noarch
 
 %description
-This package installs and sets up the SELinux policy security module (label only) for the $HOME/TARGET file(s).
+This package installs and sets up the SELinux policy security module (label only) for TARGET file(s) within the home directory.
 
 %install
 install -d %{buildroot}%{_datadir}/selinux/packages
