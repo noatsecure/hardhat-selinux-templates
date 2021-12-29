@@ -9,7 +9,7 @@ Release:    1%{?dist}
 Summary:    SELinux policy module for NAME
 
 Group:      System Environment/Base
-License:    APLv3
+License:    AGPLv3
 URL:        https://github.com/noatsecure/hardhat-selinux
 Source0:    NAME.pp
 Source1:    NAME.if
