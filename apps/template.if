@@ -34,7 +34,7 @@ interface(`MODULE_exec',`
 	')
 
 	hardhat_corecmd_search_bin($1)
-	can_exec($1, MODULE_exec_t)
+	hardhat_can_exec($1, MODULE_exec_t)
 ')
 ########################################
 ## <summary>
@@ -82,6 +82,6 @@ interface(`MODULE_role',`
 	')
 	roleattribute $1 MODULE_roles;
 	MODULE_domtrans($2)
-	ps_process_pattern($2, MODULE_t)
+	hardhat_ps_process_pattern($2, MODULE_t)
 	allow $2 MODULE_t:process { signull signal sigkill };
 ')
