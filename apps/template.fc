@@ -1,2 +1,2 @@
-/etc/NAME(/.*)? gen_context(system_u:object_r:NAME_etc_t,so)
-/usr/bin/NAME   -- gen_context(system_u:object_r:NAME_exec_t,s0)
+/etc/MODULE(/.*)? gen_context(system_u:object_r:MODULE_etc_t,so)
+/usr/bin/MODULE   -- gen_context(system_u:object_r:MODULE_exec_t,s0)
