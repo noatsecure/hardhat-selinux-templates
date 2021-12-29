@@ -15,7 +15,7 @@ Source0:    NAME.pp
 Source1:    NAME.if
 Source2:    NAME_selinux.8
 
-Requires: policycoreutils, libselinux-utils
+Requires: policycoreutils, libselinux-utils, hardhat-selinux-interfaces
 Requires(post): selinux-policy-base >= %{selinux_policyver}, policycoreutils
 Requires(postun): policycoreutils
 BuildArch: noarch
