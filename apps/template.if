@@ -16,8 +16,8 @@ interface(`NAME_domtrans',`
 		type NAME_t, NAME_exec_t;
 	')
 
-	corecmd_search_bin($1)
-	domtrans_pattern($1, NAME_exec_t, NAME_t)
+	hardhat_corecmd_search_bin($1)
+	hardhat_domtrans_pattern($1, NAME_exec_t, NAME_t)
 ')
 
 ######################################
@@ -35,7 +35,7 @@ interface(`NAME_exec',`
 		type NAME_exec_t;
 	')
 
-	corecmd_search_bin($1)
+	hardhat_corecmd_search_bin($1)
 	can_exec($1, NAME_exec_t)
 ')
 
