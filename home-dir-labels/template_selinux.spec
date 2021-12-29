@@ -14,7 +14,7 @@ URL:        https://github.com/noatsecure/hardhat-selinux
 Source0:    MODULE.pp
 Source1:    MODULE.if
 
-Requires: policycoreutils, libselinux-utils, hardhat_interface_macros
+Requires: policycoreutils, libselinux-utils, hardhat-selinux-interfaces
 Requires(post): selinux-policy-base >= %{selinux_policyver}, policycoreutils
 Requires(postun): policycoreutils
 BuildArch: noarch
