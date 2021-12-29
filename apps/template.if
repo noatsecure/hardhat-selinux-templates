@@ -1,9 +1,9 @@
 
-## <summary>policy for NAME</summary>
+## <summary>policy for MODULE</summary>
 
 ########################################
 ## <summary>
-##	Execute NAME_exec_t in the NAME domain.
+##	Execute MODULE_exec_t in the MODULE domain.
 ## </summary>
 ## <param name="domain">
 ## <summary>
@@ -11,18 +11,16 @@
 ## </summary>
 ## </param>
 #
-interface(`NAME_domtrans',`
+interface(`MODULE_domtrans',`
 	gen_require(`
-		type NAME_t, NAME_exec_t;
+		type MODULE_t, MODULE_exec_t;
 	')
-
 	hardhat_corecmd_search_bin($1)
-	hardhat_domtrans_pattern($1, NAME_exec_t, NAME_t)
+	hardhat_domtrans_pattern($1, MODULE_exec_t, MODULE_t)
 ')
-
 ######################################
 ## <summary>
-##	Execute NAME in the caller domain.
+##	Execute MODULE in the caller domain.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -30,19 +28,18 @@ interface(`NAME_domtrans',`
 ##	</summary>
 ## </param>
 #
-interface(`NAME_exec',`
+interface(`MODULE_exec',`
 	gen_require(`
-		type NAME_exec_t;
+		type MODULE_exec_t;
 	')
 
 	hardhat_corecmd_search_bin($1)
-	can_exec($1, NAME_exec_t)
+	can_exec($1, MODULE_exec_t)
 ')
-
 ########################################
 ## <summary>
-##	Execute NAME in the NAME domain, and
-##	allow the specified role the NAME domain.
+##	Execute MODULE in the MODULE domain, and
+##	allow the specified role the MODULE domain.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -51,23 +48,21 @@ interface(`NAME_exec',`
 ## </param>
 ## <param name="role">
 ##	<summary>
-##	The role to be allowed the NAME domain.
+##	The role to be allowed the MODULE domain.
 ##	</summary>
 ## </param>
 #
-interface(`NAME_run',`
+interface(`MODULE_run',`
 	gen_require(`
-		type NAME_t;
-		attribute_role NAME_roles;
+		type MODULE_t;
+		attribute_role MODULE_roles;
 	')
-
-	NAME_domtrans($1)
-	roleattribute $2 NAME_roles;
+	MODULE_domtrans($1)
+	roleattribute $2 MODULE_roles;
 ')
-
 ########################################
 ## <summary>
-##	Role access for NAME
+##	Role access for MODULE
 ## </summary>
 ## <param name="role">
 ##	<summary>
@@ -80,16 +75,13 @@ interface(`NAME_run',`
 ##	</summary>
 ## </param>
 #
-interface(`NAME_role',`
+interface(`MODULE_role',`
 	gen_require(`
-		type NAME_t;
-		attribute_role NAME_roles;
+		type MODULE_t;
+		attribute_role MODULE_roles;
 	')
-
-	roleattribute $1 NAME_roles;
-
-	NAME_domtrans($2)
-
-	ps_process_pattern($2, NAME_t)
-	allow $2 NAME_t:process { signull signal sigkill };
+	roleattribute $1 MODULE_roles;
+	MODULE_domtrans($2)
+	ps_process_pattern($2, MODULE_t)
+	allow $2 MODULE_t:process { signull signal sigkill };
 ')

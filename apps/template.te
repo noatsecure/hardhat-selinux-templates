@@ -1,4 +1,4 @@
-policy_module(NAME, 1.0.0)
+policy_module(MODULE, 1.0.0)
 ########################################
 # Required
 gen_require(`
@@ -6,17 +6,17 @@ gen_require(`
 ')
 
 # Roles
-attribute_role NAME_roles;
-roleattribute user_r NAME_roles;
-role NAME_roles types NAME_t;
+attribute_role MODULE_roles;
+roleattribute user_r MODULE_roles;
+role MODULE_roles types MODULE_t;
 
 # Types (Binary)
-type NAME_t;
-type NAME_exec_t;
-application_domain(NAME_t, NAME_exec_t);
-hardhat_domain_auto_transition_pattern(user_t, NAME_exec_t, NAME_t);
+type MODULE_t;
+type MODULE_exec_t;
+application_domain(MODULE_t, MODULE_exec_t);
+hardhat_domain_auto_transition_pattern(user_t, MODULE_exec_t, MODULE_t);
 
 # Types (Configuration Directories & Files)
-# type NAME_etc_t;
-# hardhat_files_config_file(NAME_etc_t);
+# type MODULE_etc_t;
+# hardhat_files_config_file(MODULE_etc_t);
 ########################################
