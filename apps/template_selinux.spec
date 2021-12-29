@@ -3,17 +3,17 @@ restorecon -R /usr/bin/NAME; \
 
 %define selinux_policyver 35.7-1
 
-Name:   NAME_selinux
-Version:	1.0
-Release:	1%{?dist}
-Summary:	SELinux policy module for NAME
+Name:       hardhat-selinux-app-NAME
+Version:    1.0
+Release:    1%{?dist}
+Summary:    SELinux policy module for NAME
 
 Group:      System Environment/Base
-License:	GPLv2+
+License:    APLv3
 URL:        https://github.com/noatsecure/hardhat-selinux
-Source0:	NAME.pp
-Source1:	NAME.if
-Source2:	NAME_selinux.8
+Source0:    NAME.pp
+Source1:    NAME.if
+Source2:    NAME_selinux.8
 
 Requires: policycoreutils, libselinux-utils
 Requires(post): selinux-policy-base >= %{selinux_policyver}, policycoreutils
