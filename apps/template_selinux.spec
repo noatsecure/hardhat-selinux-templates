@@ -1,5 +1,5 @@
 %define relabel_files() \
-restorecon -R /usr/bin/MODULE; \
+restorecon -i -R /usr/bin/MODULE; \
 
 %define selinux_policyver 35.7-1
 

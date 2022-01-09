@@ -49,9 +49,9 @@ make -f /usr/share/selinux/devel/Makefile MODULE.pp || exit
 sepolicy manpage -p . -d MODULE_t
 
 # Fixing the file and directory contexts
-/sbin/restorecon -F -R -v /usr/bin/MODULE
-/sbin/restorecon -F -R -v /usr/sbin/MODULE
-/sbin/restorecon -F -R -v /etc/MODULE
+/sbin/restorecon -F -i -R -v /usr/bin/MODULE
+/sbin/restorecon -F -i -R -v /usr/sbin/MODULE
+/sbin/restorecon -F -i -R -v /etc/MODULE
 
 # Generate a rpm package for the newly generated policy
 pwd=$(pwd)
